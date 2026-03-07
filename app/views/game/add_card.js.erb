@@ -1,0 +1,3 @@
+var container = document.getElementById("hand")
+
+container.insertAdjacentHTML('beforeend', "<%= j render(partial: 'card/card_item', locals: {facing: facing, card: card.shift}) %>");

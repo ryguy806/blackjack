@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "game/index"
   get "card/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,7 +14,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  root "card#index"
+  root "game#index"
 
   resources :cards
+
+  resources :game
+
+  get "/game/play", to: "game#show"
+  post "/add_card", to: "game#add_card", as: "add_card"
 end

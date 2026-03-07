@@ -1,0 +1,16 @@
+<div class="dealer-hand" >
+    
+    <% cardsInHand = [] %>
+    <% cardsInHand.push(cards.shift)%>
+    <% cardsInHand.push(cards.shift)%>
+
+    <% handValue = cardsInHand[1].value %>
+    <% handValue += cardsInHand[0].value%>
+
+    <div class="hand" id="hand">
+        <%= render "card/card_item", facing: facing, card: cardsInHand[0]%>
+        <%= render "card/card_item", facing: facing, card: cardsInHand[1] %>
+    </div>
+</div>
+
+<div class="dealer-points"><%= handValue %></div>
