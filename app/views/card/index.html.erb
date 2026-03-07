@@ -1,9 +1,10 @@
 <h1>All Cards</h1>
 
 <div>
+    <% facing = true %>
     <%= @cards.each do |card| %>
         <div>
-            <%= render "card_item", card: card%>
+            <%= render "card_item", card: card, facing: (facing ? "front" : "back") %>
         </div>
     <% end %>
 </div>

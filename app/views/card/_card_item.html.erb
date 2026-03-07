@@ -1,4 +1,9 @@
 <div class="card">
-    <div class="suit-position"><%= render "card_suit", suit: card.suit %></div>
-    <p class="rank"><%= render "card_rank", rank: card.rank %></p>
+    <% facing %>
+    <% if facing == "front" %>
+        <div class="suit-position"><%= render "card_suit", suit: card.suit %></div>
+        <p class="rank"><%= render "card_rank", rank: card.rank %></p>
+        <% else %>
+            <%= render "card_back" %>
+    <% end %>
 </div>
