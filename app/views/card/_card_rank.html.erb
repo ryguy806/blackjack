@@ -1,0 +1,15 @@
+<% if rank == "Ace" %>
+    <%= "A" %>
+<% end %>
+<% if rank == "King" %>
+    <%= "K" %>
+<% end %>
+<% if rank == "Queen" %>
+    <%= "Q" %>
+<% end %>
+<% if rank == "Jack" %>
+    <%= "J" %>
+<% end %>
+<% if rank != "Jack" && rank != "King" && rank != "Queen" && rank != "Ace" %>
+    <%= rank %>
+<% end %>

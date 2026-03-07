@@ -1,3 +1,4 @@
-<div>
-    <p><%= card.rank%> of <%= card.suit %>s</p>
+<div class="card">
+    <div class="suit-position"><%= render "card_suit", suit: card.suit %></div>
+    <p class="rank"><%= render "card_rank", rank: card.rank %></p>
 </div>

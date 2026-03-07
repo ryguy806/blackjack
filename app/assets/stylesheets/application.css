@@ -8,3 +8,25 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ .card {
+    border: solid 2px black;
+    width: 100px;
+    height: 160px;
+    margin: auto;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+    position: relative;
+ }
+
+ .suit-position {
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    font-size: 2rem;
+ }
+
+ .rank {
+    font-size: 2rem;
+ }
