@@ -27,4 +27,34 @@ class Hand
     def blackjack?
         cards.size == 2 && score == 21
     end
+
+    #checks to see if the user passed 21.
+    def busted?
+        score > 21
+    end
+
+    #checks to see if the game/turn has reached an end state.
+    def active?
+        !stood && !busted &&!done
+    end
+
+    def to_h(h)
+        {
+            cards: cards.map(&:to_h) #maps cards using the Card.to_h mehtod.
+            bet: bet
+            stood: stood
+            busted: busted
+            done: done
+        }
+    end
+
+    def self.from_h(h)
+        hand = new(h['bet'] || h[:bet] || 0)
+        hand.cards = (h['cards'] || h[:cards] || []).map { |c| c = Card.from_h(c) } #Do this to remove possiblity of return nil
+        hand.stood = h['stood'] || h[:stood] || false
+        hand.busted = h['busted'] || h[:busted] || false
+        hand.done = h['done'] || h[:done] || false
+        hand
+    end
+
 end
