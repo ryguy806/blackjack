@@ -1,8 +1,21 @@
+<%
+    game_handler = session[:game] || {}
+    step = (game_handler['step'] || "betting").to_sym
+    player_hand = (game_handler['player_hand'] || {})
+    dealer_hand = game_handler['dealer_hand'] || {}
+    dealer_cards = dealer_hand['cards'] || []
+    balance = game_handler['balance'] || 0
+    message = game_handler['message'] || ''
+
+    player_cards = player_hand['cards'] || []
+    bet = player_hand['bet'] || 0
+%>
+
 <div class="game-space">
     <div class="dealer" >
-        <%= render "dealer_space", facing: "front", cards: @cards %>
+        <%= render "dealer_space", facing: "front", cards: dealer_cards %>
     </div>
     <div class="player" >
-        <%= render "player_space", facing: "front", cards: @cards %>
+        <%= render "player_space", facing: "front", cards: player_cards %>
     </div>
 </div>

@@ -1,16 +1,25 @@
 class GameController < ApplicationController
-  # responds_to :js
 
   def index
   end
 
-  def show
-    @cards = Card.all.sample(52)
+  def new
   end
 
-  def add_card
-    respond_to do |format|
-      format.js
-    end
+  def show
   end
+
+  def create
+    balance = params[:balance].to_i
+    balance = 1000 if balance < 100
+    session[:game] = Game.new(balance).to_h
+    redirect_to game_path
+  end
+
+  def bet
+    @game.place_bet(params[:amount])
+    save_and_redirect
+  end
+
+  
 end

@@ -1,29 +1,6 @@
 <div class="player-hand" >
-
-    <% gameWin = false %>
-    
-    <% cardsInHand = [] %>
-    <% cardsInHand.push(cards.shift)%>
-    <% cardsInHand.push(cards.shift)%>
-
-    <% handValue = cardsInHand[1].value %>
-    <% handValue += cardsInHand[0].value%>
-
-    
-    <% if handValue == 21 || gameWin %>
-        <p class="game-win">YOU WIN!!!</p>
-    <% elsif handValue > 21 %>
-        <% gameOver = true %>
-    <% end %>
-    
-
-    <% if gameOver %>
-        <p>Sorry, you lose this game. Try again?</p>
-        <%= button_to "Play again", "/" %>
-    <% end %>
-
     <div class="hand" id="hand">
-        <% cardsInHand.each do |card| %>
+        <% player_cards.each do |card| %>
             <div>
                 <%= render "card/card_item", facing: facing, card: card %>
             </div>
