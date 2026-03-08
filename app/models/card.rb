@@ -20,6 +20,7 @@ class Card
         end
     end
 
+    #sending the cards to hand. TODO: Build hand class.
     def to_h
         { suit: suit, rank: rank }
     end
