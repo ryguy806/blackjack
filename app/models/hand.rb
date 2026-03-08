@@ -40,7 +40,7 @@ class Hand
         !stood && !busted &&!done
     end
 
-    def to_h(h)
+    def to_h
         {
             cards: cards.map(&:to_h), #maps cards using the Card.to_h mehtod.
             bet: bet,

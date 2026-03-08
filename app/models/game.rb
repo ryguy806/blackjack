@@ -56,7 +56,7 @@ class Game
             dealer_hand: dealer_hand.to_h,
             step: step.to_s,
             balance: balance,
-            message: message,
+            message: message
         }
     end
 
