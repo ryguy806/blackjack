@@ -1,4 +1,5 @@
 class Card
+    #suit and rank states. Placed in immutable string arrays for card creation.
     SUITS  = %w[S H D C].freeze
     RANKS  = %w[2 3 4 5 6 7 8 9 10 J Q K A].freeze
 
@@ -20,7 +21,7 @@ class Card
         end
     end
 
-    #sending the cards to hand.
+    #creates card objects for the hand class.
     def to_h
         { suit: suit, rank: rank }
     end
