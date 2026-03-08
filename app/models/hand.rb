@@ -7,7 +7,7 @@ class Hand
         @stood  = false # These are flags for game mechanics.
         @busted = false
         @done   = false
-    endk
+    end
 
     #add cards to the hand.
     def add(card)
@@ -42,10 +42,10 @@ class Hand
 
     def to_h(h)
         {
-            cards: cards.map(&:to_h) #maps cards using the Card.to_h mehtod.
-            bet: bet
-            stood: stood
-            busted: busted
+            cards: cards.map(&:to_h), #maps cards using the Card.to_h mehtod.
+            bet: bet,
+            stood: stood,
+            busted: busted,
             done: done
         }
     end
@@ -58,5 +58,4 @@ class Hand
         hand.done = h['done'] || h[:done] || false
         hand
     end
-
 end

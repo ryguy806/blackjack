@@ -6,20 +6,20 @@ class GameController < ApplicationController
   def new
   end
 
-  def show
-  end
-
   def create
     balance = params[:balance].to_i
     balance = 1000 if balance < 100
     session[:game] = Game.new(balance).to_h
     redirect_to game_path
   end
-
+  
+  def show
+  end
+  
   def bet
     @game.place_bet(params[:amount])
     save_and_redirect
   end
 
-  
+
 end

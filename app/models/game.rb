@@ -1,8 +1,7 @@
 class Game
     attr_accessor :deck, :player_hand, :dealer_hand, :step, :balance
 
-    #start game by giving the player a starting balance.
-    def def initialize(balance = 1000)
+    def initialize(balance = 1000)
       @balance = balance
       @deck = Deck.new
       @step = :betting
@@ -48,5 +47,27 @@ class Game
 
     def error(message) #Needed a changeable error message that doesn't break stuff.
         @message = "Error: #{message}"
+    end
+
+    def to_h
+        {
+            deck: deck.to_a,
+            player_hand: player_hand.to_h,
+            dealer_hand: dealer_hand.to_h,
+            step: step.to_s,
+            balance: balance,
+            message: message,
+        }
+    end
+
+    def self.from_h(h)
+        game = allocate
+        game.deck = Deck.from_a(h['deck'] || [])
+        game.player_hand = Hand.from_h(h['player_hand'] || {})
+        game.dealer_hand = Hand.from_h(h['dealer_hand'] || {})
+        game.step = (h['step'] || 'betting').to_sym
+        game.balance = h['balance'] || 1000
+        game.message = h['message'] || ''
+        game
     end
 end

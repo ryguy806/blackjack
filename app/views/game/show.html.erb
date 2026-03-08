@@ -9,11 +9,13 @@
 
     player_cards = player_hand['cards'] || []
     bet = player_hand['bet'] || 0
+
+    show_dealer = step == :player_turn ? 'front' : "back"
 %>
 
 <div class="game-space">
     <div class="dealer" >
-        <%= render "dealer_space", facing: "front", cards: dealer_cards %>
+        <%= render "dealer_space", facing: show_dealer, cards: dealer_cards %>
     </div>
     <div class="player" >
         <%= render "player_space", facing: "front", cards: player_cards %>
