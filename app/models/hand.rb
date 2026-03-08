@@ -1,11 +1,13 @@
 class Hand
+    attr_accessor :cards, :bet, :stood, :busted, :done 
+
     def initialize(bet = 0)
         @cards  = [] #Array for cards in hand
         @bet    = bet # Current bet
         @stood  = false # These are flags for game mechanics.
         @busted = false
         @done   = false
-    end
+    endk
 
     #add cards to the hand.
     def add(card)
