@@ -81,6 +81,20 @@
 }
 .quick-bet:hover { background: rgba(255,255,255,0.22); }
 
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 10px 0;
+}
+.result-badge {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
 .dealer {
     width: 90%;
     display: flex;

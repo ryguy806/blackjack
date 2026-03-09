@@ -1,5 +1,5 @@
 class Game
-    attr_accessor :deck, :player_hand, :dealer_hand, :step, :balance, :message
+    attr_accessor :deck, :player_hand, :dealer_hand, :step, :balance, :message, :results
 
     def initialize(balance = 1000)
       @balance = balance
@@ -8,6 +8,7 @@ class Game
       @player_hand = Hand.new
       @dealer_hand = Hand.new
       @message = "Place your bet!" # This message will change depending on the state and if there are errors.
+      @results = "These are the results"  
     end
 
     # TODO Need to break game into steps
@@ -65,6 +66,7 @@ class Game
         end
 
         @step = :game_over
+        get_results
     end
     
     def to_h
@@ -93,6 +95,24 @@ class Game
         def deal_initial
             2.times { player_hand.add(deck.deal) }
             2.times { dealer_hand.add(deck.deal) }
+        end
+
+        def get_results
+            @step = :game_over
+            if player_hand.blackjack? && !dealer_hand.blackjack?
+                @balance += (player_hand.bet * 2.5).to_i
+                @results = "Blackjack! You win! Earned $#{(player_hand.bet * 1.5).to_i}!"
+            elsif player_hand.busted?
+                @results = "Bust! Try again."
+            elsif dealer_hand.busted? || player_hand.score > dealer_hand.score
+                @balance += player_hand.bet * 2
+                @results = "You win! Earned $#{player_hand.bet}!"
+            elsif player_hand.score == dealer_hand.score
+                @balance += player_hand.bet
+                @results = "Push. Money back."
+            else
+                @results = "Dealer wins. Lost $#{player_hand.bet}."
+            end
         end
 
         def error(message) #Needed a changeable error message that doesn't break stuff.

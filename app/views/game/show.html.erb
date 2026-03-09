@@ -6,11 +6,12 @@
     dealer_cards = dealer_hand['cards'] || []
     balance = game_handler['balance'] || 0
     message = game_handler['message'] || ''
+    results = game_handler['results'] || ''
 
     player_cards = player_hand['cards'] || []
     bet = player_hand['bet'] || 0
 
-    show_dealer = step == :game_over ? 'front' : "back"
+    show_dealer = step == :player_turn ? 'back' : 'front'
 %>
 
 <div class="game-space">
@@ -23,6 +24,12 @@
     <div class="player" >
         <%= render "player_space", facing: "front", cards: player_cards, balance: balance %>
     </div>
+
+    <% if step == :game_over %>
+        <div class="results">
+            <span class="result-badge"><%= results %></span>
+        </div>
+    <% end %>
 
     <div class="actions">
     <% if step == :betting %>
@@ -53,15 +60,3 @@
         <% end %>
     <% end %>
 </div>
-
-<script>
-    //Needed to write a JS script in order to manage the quick bet buttons.
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.quick-bet').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const input = document.querySelector('input[name="wager"]');
-          if (input) input.value = btn.dataset.value;
-        });
-      });
-    });
-  </script>
