@@ -36,7 +36,24 @@ class Game
         @message = change_message
     end
 
-    def hit    
+    def hit  
+        return error("Please wait for your turn to hit.")  unless step == :player_turn
+        player_hand.add(deck.deal)
+        if player_hand.busted?
+            player_hand.busted = true
+            player_hand.done = true
+            @message = "Bust! (#{player_hand.score})"
+        else
+            @message = "Hit - score: (#{player_hand.score})"
+        end
+    end
+
+    def stand
+        return error("Please wait for your turn to stand.") unless step == :player_turn
+        player_hand.stood = true
+        player_hand.done = true
+        @message = "Stand! Your score = (#{player_hand.score})"
+        step = :dealer_turn
     end
     
     def to_h
@@ -62,14 +79,13 @@ class Game
     end
     
     private
+        def deal_initial
+            2.times { player_hand.add(deck.deal) }
+            2.times { dealer_hand.add(deck.deal) }
+        end
 
-    def deal_initial
-        2.times { player_hand.add(deck.deal) }
-        2.times { dealer_hand.add(deck.deal) }
-    end
-
-    def error(message) #Needed a changeable error message that doesn't break stuff.
-        @message = "Error: #{message}"
+        def error(message) #Needed a changeable error message that doesn't break stuff.
+            @message = "Error: #{message}"
         end
 
         def change_message
