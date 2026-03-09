@@ -16,9 +16,9 @@ class Hand
 
     #calculates the score of the current hand.
     def score
-        total = cards.sum(:value)
-        aces = card.count { |c| c.rank == 'A' }
-        while total > 21 && aces > 0
+        total = cards.sum { |card| card.value }
+        aces = cards.count { |c| c.rank == 'A' }
+        while total > 21 && aces > 0 #Manages whether an Ace is 1 or 11.
             total -= 10
             aces -= 1
         end

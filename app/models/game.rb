@@ -30,20 +30,13 @@ class Game
 
         @balance -= wager
         hand = Hand.new(wager)
-        @player_hand = [hand] 
+        @player_hand = hand 
         deal_initial
         @step = :player_turn
         @message = change_message
     end
 
     def hit    
-    end
-
-    def deal_initial
-        player_hand.add(deck.deal)
-        player_hand.add(deck.deal)
-        dealer_hand.add(deck.deal)
-        dealer_hand.add(deck.deal)
     end
     
     def to_h
@@ -69,15 +62,21 @@ class Game
     end
     
     private
-        def error(message) #Needed a changeable error message that doesn't break stuff.
-            @message = "Error: #{message}"
+
+    def deal_initial
+        2.times { player_hand.add(deck.deal) }
+        2.times { dealer_hand.add(deck.deal) }
+    end
+
+    def error(message) #Needed a changeable error message that doesn't break stuff.
+        @message = "Error: #{message}"
         end
 
         def change_message
-            if player_hand.first.blackjack?
+            if player_hand.blackjack?
             'Blackjack!'
             else
-            "Cards dealt. Score: #{player_hand.first.score}"
+            "Cards dealt. Score: #{player_hand.score}"
             end
         end
 end
