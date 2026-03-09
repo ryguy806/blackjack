@@ -5,6 +5,6 @@
   <%= form_with url: game_create_path, method: :post do |f| %>
     <%= f.number_field :balance, value: 1000, min: 100, max: 100_000,
           placeholder: 'Starting balance' %>
-    <%= f.submit 'Start Game' %>
+    <%= f.submit 'Start Game', class: 'btn' %>
   <% end %>
 </div>

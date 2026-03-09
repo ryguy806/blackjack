@@ -22,6 +22,21 @@
     align-items: center;
 }
 
+.game-space h1 { margin-bottom: 14px; font-size: 3rem; }
+.game-space p  { color: #0800ff; margin-bottom: 24px; font-size: 1.5rem; }
+.game-space input[type=number] {
+    width: 140px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    background: rgba(0, 26, 255, 0.1);
+    color: #f0e6cc;
+    font-size: 1.2rem;
+    text-align: center;
+    display: block;
+    margin: 0 auto 18px;
+}
+
 .message-box {
     background: rgba(0,0,0,0.35);
     border: 1px solid rgba(255,255,255,0.1);
@@ -109,15 +124,6 @@
     gap: 10%;
 }
 
-.buttons {
-    width: 40px;
-    height: 40px;
-}
-
-.buttons button {
-    font-size: 2rem;
-}
-
 .player-money {
     font-size: 3rem;
 }
@@ -165,6 +171,34 @@
     height: 160px;
     position: relative; /* establishes a positioning context for the image */
     overflow: hidden;
+ }
+
+ .btn {
+      padding: 11px 26px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: filter 0.15s, transform 0.1s;
+    }
+    .btn-green  { background: #2e7d32; color: #fff; }
+    .btn-yellow { background: #c8a800; color: #1a1a00; }
+    .btn-blue   { background: #1565c0; color: #fff; }
+    .btn-purple { background: #6a1b9a; color: #fff; }
+    .btn-red    { background: #b71c1c; color: #fff; }
+    .btn-gray   { background: #455a64; color: #fff; }
+
+ .out {
+    display: flex;
+    padding: 5px 5px 5px 10px ;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .out p {
+    align-self: center;
  }
 
  .card-back img {

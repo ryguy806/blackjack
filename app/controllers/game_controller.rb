@@ -32,6 +32,12 @@ class GameController < ApplicationController
     save_and_redirect
   end
 
+  def new_round
+    new_game = Game.new(@game.balance)
+    session[:game] = new_game.to_h
+    redirect_to game_path
+  end
+
   private
     
     def load_game
