@@ -101,17 +101,17 @@ class Game
             @step = :game_over
             if player_hand.blackjack? && !dealer_hand.blackjack?
                 @balance += (player_hand.bet * 2.5).to_i
-                @results = "Blackjack! You win! Earned $#{(player_hand.bet * 1.5).to_i}!"
+                @message = "Blackjack! You win! Earned $#{(player_hand.bet * 1.5).to_i}!"
             elsif player_hand.busted?
-                @results = "Bust! Try again."
+                @message = "Bust! Try again."
             elsif dealer_hand.busted? || player_hand.score > dealer_hand.score
                 @balance += player_hand.bet * 2
-                @results = "You win! Earned $#{player_hand.bet}!"
+                @message = "You win! Earned $#{player_hand.bet}!"
             elsif player_hand.score == dealer_hand.score
                 @balance += player_hand.bet
-                @results = "Push. Money back."
+                @message = "Push. Money back."
             else
-                @results = "Dealer wins. Lost $#{player_hand.bet}."
+                @message = "Dealer wins. Lost $#{player_hand.bet}."
             end
         end
 

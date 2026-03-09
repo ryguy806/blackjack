@@ -6,7 +6,6 @@
     dealer_cards = dealer_hand['cards'] || []
     balance = game_handler['balance'] || 0
     message = game_handler['message'] || ''
-    results = game_handler['results'] || ''
 
     player_cards = player_hand['cards'] || []
     bet = player_hand['bet'] || 0
@@ -24,12 +23,6 @@
     <div class="player" >
         <%= render "player_space", facing: "front", cards: player_cards, balance: balance %>
     </div>
-
-    <% if step == :game_over %>
-        <div class="results">
-            <span class="result-badge"><%= results %></span>
-        </div>
-    <% end %>
 
     <div class="actions">
     <% if step == :betting %>
