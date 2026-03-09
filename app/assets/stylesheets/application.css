@@ -11,8 +11,8 @@
 
 .game-space {
     background-color: #07b307;
-    height: 99vh;
-    width: 99vw;
+    height: 98vh;
+    width: 98vw;
     margin: auto;
     padding: 0;
     overflow: hidden;
@@ -22,6 +22,65 @@
     justify-content: center;
     align-items: center;
 }
+
+.message-box {
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 12px 18px;
+    text-align: center;
+    margin: 16px 0;
+    font-size: 1.05rem;
+    color: #f0e6cc;
+    min-height: 46px;
+}
+
+.actions {
+    position: absolute;
+    bottom: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bet-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.bet-form input[type=number] {
+    width: 110px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #a0b0a0;
+    background: rgba(255,255,255,0.1);
+    color: #f0e6cc;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.quick-bets { 
+    display: flex;
+    gap: 8px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+}
+
+.quick-bet {
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #f0e6cc;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.15s;
+}
+.quick-bet:hover { background: rgba(255,255,255,0.22); }
 
 .dealer {
     width: 90%;

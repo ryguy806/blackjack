@@ -17,9 +17,18 @@ class GameController < ApplicationController
   end
   
   def bet
-    @game.place_bet(params[:amount])
+    @game.bet(params[:wager])
     save_and_redirect
   end
 
+  def hit
+    @game.hit
+    save_and_redirect
+  end
+
+  def stand
+    @game.stand
+    save_and_redirect
+  end
 
 end

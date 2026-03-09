@@ -1,14 +1,8 @@
-<% dealer_cards = dealer_cards%>
-
 <div class="dealer-hand" >
 
     <div class="hand" id="hand">
-        <% dealer_cards.each do |card| %>
-            <div>
-                <%= render "card/card_item", facing: facing, card: card %>
-            </div>
+        <% cards.each do |card| %>
+            <%= render "card/card_item", facing: facing, card: card %>
         <% end %>
     </div>
 </div>
-
-<div class="dealer-points"><%= handValue %></div>

@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   get    '/game/new', to: 'game#new', as: :new_game
   post   '/game/create', to: 'game#create'
   get    '/game', to: 'game#show', as: :game
+  post   '/game/bet', to: 'game#bet', as: :game_bet
+  post   '/game/hit', to: 'game#hit', as: :game_hit
+  post   '/game/stand', to: 'game#stand', as: :game_stand
 end

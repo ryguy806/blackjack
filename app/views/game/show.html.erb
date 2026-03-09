@@ -17,7 +17,21 @@
     <div class="dealer" >
         <%= render "dealer_space", facing: show_dealer, cards: dealer_cards %>
     </div>
+    <div class="message-box"><%= message %></div>
     <div class="player" >
-        <%= render "player_space", facing: "front", cards: player_cards %>
+        <%= render "player_space", facing: "front", cards: player_cards, balance: balance %>
     </div>
+
+    <div class="actions">
+    <% if step == :betting %>
+        <%= form_with url: game_bet_path, method: :post, local: true do |f| %>
+        <div class="bet-form">
+            <div>
+            <%= f.number_field :wager, min: 1, max: balance, value: [25, balance].min,
+                    placeholder: 'Bet', style: 'margin-top:6px;' %>
+            </div>
+            <%= f.submit 'Deal', class: 'btn btn-green' %>
+        </div>
+        <% end %>
+    <% end %>
 </div>

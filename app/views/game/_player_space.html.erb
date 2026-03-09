@@ -1,18 +1,9 @@
 <div class="player-hand" >
     <div class="hand" id="hand">
-        <% player_cards.each do |card| %>
-            <div>
-                <%= render "card/card_item", facing: facing, card: card %>
-            </div>
+        <% cards.each do | card | %>
+            <%= render "card/card_item", facing: facing, card: card %>
         <% end %>
     </div>
 </div>
 
-<div class="buttons">
-    <%= button_to "Hit", add_card_path, method: :get, data: { turbo_frame: "hand", action: "click->cardsInHand.push(cards.shift)" } %>
-    <%= button_to "Stay" %>
-</div>
-
-<div class="player-points"><%= handValue %></div>
-
-<div class="player-money" >$100.00</div>
+<div class="player-money" >$<%= balance %></div>

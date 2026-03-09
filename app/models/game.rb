@@ -1,5 +1,5 @@
 class Game
-    attr_accessor :deck, :player_hand, :dealer_hand, :step, :balance
+    attr_accessor :deck, :player_hand, :dealer_hand, :step, :balance, :message
 
     def initialize(balance = 1000)
       @balance = balance
