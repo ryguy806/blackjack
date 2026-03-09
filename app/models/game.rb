@@ -23,17 +23,17 @@ class Game
     # Dealer turn
 
     def place_bet(wager)
-        return error('Not in betting phase') unless phase == :betting
+        return error('Not in betting phase') unless step == :betting
 
         wager = wager.to_i
         return error('Invalid bet wager') if wager <= 0 || wager > balance
 
-        @balance      -= wager
-        hand           = Hand.new(wager)
-        @player_hands  = [hand] 
+        @balance -= wager
+        hand = Hand.new(wager)
+        @player_hand = [hand] 
         deal_initial
-        @phase         = :player_turn
-        @message       = resolve_opening_message
+        @step = :player_turn
+        @message = change_message
     end
 
     def hit    
@@ -74,10 +74,10 @@ class Game
         end
 
         def change_message
-            if player_hands.first.blackjack?
+            if player_hand.first.blackjack?
             'Blackjack!'
             else
-            "Cards dealt. Score: #{player_hands.first.score}"
+            "Cards dealt. Score: #{player_hand.first.score}"
             end
         end
 end

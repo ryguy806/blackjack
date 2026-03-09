@@ -1,4 +1,5 @@
 class GameController < ApplicationController
+  before_action :load_game, except: [:new, :create]
 
   def index
   end
@@ -30,5 +31,20 @@ class GameController < ApplicationController
     @game.stand
     save_and_redirect
   end
+
+  private
+    
+    def load_game
+      if session[:game]
+        @game = Game.from_h(session[:game])
+      else
+        redirect_to new_game_path
+      end
+    end
+  
+    def save_and_redirect
+      session[:game] = @game.to_h
+      redirect_to game_path
+    end
 
 end
