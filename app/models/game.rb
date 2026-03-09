@@ -22,20 +22,21 @@ class Game
     # -Done
     # Dealer turn
 
-    def bet(wager)
-        return error("Betting closed. Playing.") unless step == :betting #Checks to make sure bets can't be changed once game starts
+    def place_bet(wager)
+        return error('Not in betting phase') unless phase == :betting
 
         wager = wager.to_i
-        return error("Cannot place this bet.") if wager <= 0 || wager > balance #Checks to make sure the bet is valid.
+        return error('Invalid bet wager') if wager <= 0 || wager > balance
 
-        @balance -= wager #removes the bet from the balance
-        hand = Hand.new(wager) #gives the bet to the hand.
-        deal_initial #deals the first cards to the player and dealer.
-        @step = :player_turn #changes the step to the player.
+        @balance      -= wager
+        hand           = Hand.new(wager)
+        @player_hands  = [hand] 
+        deal_initial
+        @phase         = :player_turn
+        @message       = resolve_opening_message
     end
 
-    def hit
-        
+    def hit    
     end
 
     def deal_initial
@@ -44,11 +45,7 @@ class Game
         dealer_hand.add(deck.deal)
         dealer_hand.add(deck.deal)
     end
-
-    def error(message) #Needed a changeable error message that doesn't break stuff.
-        @message = "Error: #{message}"
-    end
-
+    
     def to_h
         {
             deck: deck.to_a,
@@ -59,7 +56,7 @@ class Game
             message: message
         }
     end
-
+    
     def self.from_h(h)
         game = allocate
         game.deck = Deck.from_a(h['deck'] || [])
@@ -70,4 +67,17 @@ class Game
         game.message = h['message'] || ''
         game
     end
+    
+    private
+        def error(message) #Needed a changeable error message that doesn't break stuff.
+            @message = "Error: #{message}"
+        end
+
+        def change_message
+            if player_hands.first.blackjack?
+            'Blackjack!'
+            else
+            "Cards dealt. Score: #{player_hands.first.score}"
+            end
+        end
 end

@@ -17,7 +17,9 @@
     <div class="dealer" >
         <%= render "dealer_space", facing: show_dealer, cards: dealer_cards %>
     </div>
+
     <div class="message-box"><%= message %></div>
+
     <div class="player" >
         <%= render "player_space", facing: "front", cards: player_cards, balance: balance %>
     </div>
@@ -27,6 +29,12 @@
         <%= form_with url: game_bet_path, method: :post, local: true do |f| %>
         <div class="bet-form">
             <div>
+            <div class="quick-bets">
+                <% [10, 25, 50, 100].each do |amt| %>
+                <button type="button" class="quick-bet" data-value="<%= amt %>">$<%= amt %></button>
+                <% end %>
+            </div>
+            <br>
             <%= f.number_field :wager, min: 1, max: balance, value: [25, balance].min,
                     placeholder: 'Bet', style: 'margin-top:6px;' %>
             </div>
@@ -34,4 +42,26 @@
         </div>
         <% end %>
     <% end %>
+
+    <% if step == :player_turn %>
+        <%= form_with url: game_hit_path, method: :post, local: true do |f| %>
+        <%= f.submit 'Hit', class: 'btn btn-green' %>
+        <% end %>
+
+        <%= form_with url: game_stand_path, method: :post, local: true do |f| %>
+        <%= f.submit 'Stand', class: 'btn btn-yellow' %>
+        <% end %>
+    <% end %>
 </div>
+
+<script>
+    //Needed to write a JS script in order to manage the quick bet buttons.
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.quick-bet').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const input = document.querySelector('input[name="wager"]');
+          if (input) input.value = btn.dataset.value;
+        });
+      });
+    });
+  </script>
