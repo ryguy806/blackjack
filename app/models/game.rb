@@ -53,7 +53,18 @@ class Game
         player_hand.stood = true
         player_hand.done = true
         @message = "Stand! Your score = (#{player_hand.score})"
-        step = :dealer_turn
+        @step = :dealer_turn
+        dealer_turn
+    end
+
+    def dealer_turn
+        return error("Not dealer turn") unless step == :dealer_turn
+
+        while dealer_hand.score < 17
+            dealer_hand.add(deck.deal)
+        end
+
+        @step = :game_over
     end
     
     def to_h

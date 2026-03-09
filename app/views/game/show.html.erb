@@ -10,7 +10,7 @@
     player_cards = player_hand['cards'] || []
     bet = player_hand['bet'] || 0
 
-    show_dealer = step == :player_turn ? 'front' : "back"
+    show_dealer = step == :game_over ? 'front' : "back"
 %>
 
 <div class="game-space">
