@@ -124,6 +124,12 @@
     gap: 10%;
 }
 
+.player-space {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
 .player-money {
     font-size: 3rem;
 }

@@ -1,9 +1,11 @@
-<div class="player-hand" >
-    <div class="hand" id="hand">
-        <% cards.each do | card | %>
-            <%= render "card/card_item", facing: facing, card: card %>
-        <% end %>
+<div class="player-space">
+    <div class="player-hand" >
+        <div class="hand" id="hand">
+            <% cards.each do | card | %>
+                <%= render "card/card_item", facing: facing, card: card %>
+            <% end %>
+        </div>
     </div>
-</div>
 
-<div class="player-money" >$<%= balance %></div>
+    <div class="player-money" >$<%= balance %></div>
+</div>

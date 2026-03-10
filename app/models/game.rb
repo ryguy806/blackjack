@@ -5,7 +5,7 @@ class Game
       @balance = balance
       @deck = Deck.new
       @step = :betting
-      @player_hand = Hand.new
+      @player_hand = Hand.new #Needs to be an array.
       @dealer_hand = Hand.new
       @message = "Place your bet!" # This message will change depending on the state and if there are errors.
       @results = "These are the results"  
@@ -30,17 +30,17 @@ class Game
         return error('Invalid bet wager') if wager <= 0 || wager > balance
 
         @balance -= wager
-        hand = Hand.new(wager)
-        @player_hand = hand 
+        hand = Hand.new(wager) #Need to do this per split hand.
+        @player_hand = hand
         deal_initial
-        @step = :player_turn
+        @step = :player_turn #Need to check balance to see if split possible.
         @message = change_message
     end
 
     def split
     end
 
-    def hit  
+    def hit # Need to be able to handle multiple hands, so do this per hand.
         return error("Please wait for your turn to hit.")  unless step == :player_turn
         player_hand.add(deck.deal)
         if player_hand.busted?
@@ -54,7 +54,7 @@ class Game
         end
     end
 
-    def stand
+    def stand # Need to be able to handle multiple hands, so do this per hand.
         return error("Please wait for your turn to stand.") unless step == :player_turn
         player_hand.stood = true
         player_hand.done = true
@@ -63,7 +63,7 @@ class Game
         dealer_turn
     end
 
-    def dealer_turn
+    def dealer_turn #Dealer able to split?
         return error("Not dealer turn") unless step == :dealer_turn
 
         while dealer_hand.score < 17
@@ -102,7 +102,7 @@ class Game
             2.times { dealer_hand.add(deck.deal) }
         end
 
-        def get_results
+        def get_results #Find a way to loop through the hands to be able to handle multiple wins, losses, and pushes.
             @step = :game_over
             if player_hand.blackjack? && !dealer_hand.blackjack?
                 @balance += (player_hand.bet * 2.5).to_i
