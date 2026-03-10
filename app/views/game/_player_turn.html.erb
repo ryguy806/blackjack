@@ -1,0 +1,7 @@
+<%= form_with url: game_hit_path, method: :post, local: true do |f| %>
+    <%= f.submit 'Hit', class: 'btn btn-green' %>
+<% end %>
+
+<%= form_with url: game_stand_path, method: :post, local: true do |f| %>
+    <%= f.submit 'Stand', class: 'btn btn-yellow' %>
+<% end %>

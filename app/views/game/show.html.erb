@@ -26,45 +26,14 @@
 
     <div class="actions">
     <% if step == :betting %>
-        <%= form_with url: game_bet_path, method: :post, local: true do |f| %>
-        <div class="bet-form">
-            <div>
-            <div class="quick-bets">
-                <% [10, 25, 50, 100].each do |amt| %>
-                <button type="button" class="quick-bet" data-value="<%= amt %>">$<%= amt %></button>
-                <% end %>
-            </div>
-            <br>
-            <%= f.number_field :wager, min: 1, max: balance, value: [25, balance].min,
-                    placeholder: 'Bet', style: 'margin-top:6px;' %>
-            </div>
-            <%= f.submit 'Deal', class: 'btn btn-green' %>
-        </div>
-        <% end %>
+        <%= render "betting", balance: balance%>
     <% end %>
 
     <% if step == :player_turn %>
-        <%= form_with url: game_hit_path, method: :post, local: true do |f| %>
-        <%= f.submit 'Hit', class: 'btn btn-green' %>
-        <% end %>
-
-        <%= form_with url: game_stand_path, method: :post, local: true do |f| %>
-        <%= f.submit 'Stand', class: 'btn btn-yellow' %>
-        <% end %>
+        <%= render "player_turn" %>
     <% end %>
 
     <% if step == :game_over %>
-    <% if balance > 0 %>
-        <%= form_with url: game_new_round_path, method: :post, local: true do |f| %>
-            <%= f.submit 'Next Round', class: 'btn btn-green' %>
-        <% end %>
-    <% else %>
-        <div class=".out">
-            <p style="color:#ff0000; font-size: 1.5rem; margin: 10px;">Out of chips!</p>
-        </div>
+        <%= render "game_over", balance: balance %>
     <% end %>
-    <%= form_with url: new_game_path, method: :get, local: true do |f| %>
-        <%= f.submit 'New Game', class: 'btn btn-gray' %>
-    <% end %>
-  <% end %>
 </div>

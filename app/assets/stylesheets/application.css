@@ -23,7 +23,7 @@
 }
 
 .game-space h1 { margin-bottom: 14px; font-size: 3rem; }
-.game-space p  { color: #0800ff; margin-bottom: 24px; font-size: 1.5rem; }
+.game-space p  { color: #000; margin-bottom: 24px; font-size: 1.5rem; }
 .game-space input[type=number] {
     width: 140px;
     padding: 12px;
@@ -44,7 +44,7 @@
     padding: 12px 18px;
     text-align: center;
     margin: 16px 0;
-    font-size: 1.05rem;
+    font-size: 1.5rem;
     color: #f0e6cc;
     min-height: 46px;
 }
@@ -86,7 +86,7 @@
 
 .quick-bet {
     padding: 8px 16px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(3, 47, 225, 0.833);
     border: 1px solid rgba(255,255,255,0.25);
     color: #f0e6cc;
     border-radius: 20px;

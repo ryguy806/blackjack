@@ -1,0 +1,13 @@
+<% if balance > 0 %>
+    <%= form_with url: game_new_round_path, method: :post, local: true do |f| %>
+        <%= f.submit 'Next Round', class: 'btn btn-green' %>
+    <% end %>
+    <% else %>
+        <div class=".out">
+            <p style="color:#ff0000; font-size: 1.5rem; margin: 10px;">Out of chips!</p>
+        </div>
+<% end %>
+
+<%= form_with url: new_game_path, method: :get, local: true do |f| %>
+    <%= f.submit 'New Game', class: 'btn btn-gray' %>
+<% end %>

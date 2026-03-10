@@ -1,0 +1,15 @@
+<%= form_with url: game_bet_path, method: :post, local: true do |f| %>
+    <div class="bet-form">
+        <div>
+        <div class="quick-bets">
+            <% [10, 25, 50, 100].each do |amt| %>
+            <button type="button" class="quick-bet btn" data-value="<%= amt %>">$<%= amt %></button>
+            <% end %>
+        </div>
+        <br>
+        <%= f.number_field :wager, min: 1, max: balance, value: [25, balance].min,
+                placeholder: 'Bet', style: 'margin-top:6px;' %>
+        </div>
+        <%= f.submit 'Deal', class: 'btn btn-green' %>
+    </div>
+<% end %>
