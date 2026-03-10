@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post   '/game/create', to: 'game#create'
   get    '/game', to: 'game#show', as: :game
   post   '/game/bet', to: 'game#bet', as: :game_bet
+  post   '/game/split', to: 'game#split', as: :game_split
   post   '/game/hit', to: 'game#hit', as: :game_hit
   post   '/game/stand', to: 'game#stand', as: :game_stand
   post   '/game/new_round', to: 'game#new_round', as: :game_new_round

@@ -16,7 +16,7 @@ class Game
     # -Bet
     # -Deal
     # Player turn
-    # -Split
+    # -Split (Needs to happen only on deal)
     # -Hit
     # -Stand
     # -Busted
@@ -35,6 +35,9 @@ class Game
         deal_initial
         @step = :player_turn
         @message = change_message
+    end
+
+    def split
     end
 
     def hit  
@@ -123,9 +126,9 @@ class Game
 
         def change_message
             if player_hand.blackjack?
-            'Blackjack!'
-            else
-            "Cards dealt. Score: #{player_hand.score}"
+                'Blackjack!'
+                else
+                    "Cards dealt. Score: #{player_hand.score}"
             end
         end
 end
