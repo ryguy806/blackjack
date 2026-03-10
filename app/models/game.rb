@@ -44,6 +44,8 @@ class Game
             player_hand.busted = true
             player_hand.done = true
             @message = "Bust! (#{player_hand.score})"
+            @step = :dealer_turn
+            dealer_turn
         else
             @message = "Hit - score: (#{player_hand.score})"
         end

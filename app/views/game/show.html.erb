@@ -25,15 +25,16 @@
     </div>
 
     <div class="actions">
-    <% if step == :betting %>
-        <%= render "betting", balance: balance%>
-    <% end %>
+        <% if step == :betting %>
+            <%= render "betting", balance: balance%>
+        <% end %>
 
-    <% if step == :player_turn %>
-        <%= render "player_turn" %>
-    <% end %>
+        <% if step == :player_turn %>
+            <%= render "player_turn" %>
+        <% end %>
 
-    <% if step == :game_over %>
-        <%= render "game_over", balance: balance %>
-    <% end %>
+        <% if step == :game_over %>
+            <%= render "game_over", balance: balance %>
+        <% end %>
+    </div>
 </div>
