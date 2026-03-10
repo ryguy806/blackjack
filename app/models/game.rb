@@ -41,33 +41,31 @@ class Game
 
     def split
         return error('Not player turn') unless phase == :player_turn
-        return error('Cannot split this hand') unless player_hands.first.splittable?
-        return error('Insufficient balance') if balance < player_hands.first.bet
+        return error('Cannot split this hand') unless current_hand.splittable?
+        return error('Insufficient balance') if balance < current_hand.bet
 
-        @balance -= player_hands.first.bet
+        @balance -= current_hand.bet
     end
 
     def hit # Need to be able to handle multiple hands, so do this per hand.
         return error("Please wait for your turn to hit.")  unless step == :player_turn
-        player_hands.first.add(deck.deal)
-        if player_hands.first.busted?
-            player_hands.first.busted = true
-            player_hands.first.done = true
-            @message = "Bust! (#{player_hands.first.score})"
-            @step = :dealer_turn
-            dealer_turn
+        current_hand.add(deck.deal)
+        if current_hand.busted?
+            current_hand.busted = true
+            current_hand.done = true
+            @message = "Bust on hand #{active_hand + 1}. (#{current_hand.score})"
+            next_hand
         else
-            @message = "Hit - score: (#{player_hands.first.score})"
+            @message = "Hit. Score: (#{current_hand.score})"
         end
     end
 
     def stand # Need to be able to handle multiple hands, so do this per hand.
         return error("Please wait for your turn to stand.") unless step == :player_turn
-        player_hands.first.stood = true
-        player_hands.first.done = true
-        @message = "Stand! Your score = (#{player_hands.score})"
-        @step = :dealer_turn
-        dealer_turn
+        current_hand.stood = true
+        current_hand.done = true
+        @message = "Stand on hand #{active_hand + 1} (#{current_hand.score})"
+        advance_hand
     end
 
     def dealer_turn #Dealer able to split?
@@ -124,6 +122,24 @@ class Game
                 @message = "Push. Money back."
             else
                 @message = "Dealer wins. Lost $#{player_hands.bet}."
+            end
+        end
+
+        def current_hand
+            player_hands[active_hand]
+        end
+
+        def next_hand
+            next_index = (active_hand + 1...player_hands.size).find do |i|
+                !player_hands[i].done
+            end
+
+            if next_index
+                @active_hand = next_index
+                @message += " → Now playing hand #{active_hand + 1}"
+                else
+                    @phase   = :dealer_turn
+                    dealer_play
             end
         end
 
