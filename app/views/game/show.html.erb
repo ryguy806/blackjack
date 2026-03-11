@@ -18,6 +18,7 @@
     </div>
 
     <div class="message-box"><%= message %></div>
+    <div class="player-money" >$<%= balance %></div>
     
     <div class="player" >
         <% player_hands.each_with_index do | hand, index | %>
@@ -32,9 +33,6 @@
             <%= render "player_space", index: index, facing: "front", cards: hand_cards, balance: balance, bet: hand_bet, bust: is_bust, stood: is_stood, score: hand_score %>
         <% end %>
     </div>
-
-    <div class="player-money" >$<%= balance %></div>
-
 
     <div class="actions">
         <% if step == :betting %>
