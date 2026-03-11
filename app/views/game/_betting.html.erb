@@ -3,7 +3,7 @@
         <div>
         <div class="quick-bets">
             <div>
-                <p>Custom Bet:</p>
+                <p style="color: #FFF;">Custom Bet:</p>
                 <%= f.number_field :wager, min: 1, max: balance, value: [25, balance].min,
                         placeholder: 'Bet', style: 'margin-top:6px;', 
                         oninvalid: "this.setCustomValidity('Bet must be less than or equal to your balance.')",
@@ -12,7 +12,7 @@
             </div>
             <div style="margin-left: 30px;"/>
             <div>
-                <p>Quick Bet:</p>
+                <p style="color: #FFF;">Quick Bet:</p>
                 <% [10, 25, 50, 100].each do |amt| %>
                     <button type="button" class="quick-bet btn" data-value="<%= amt %>">$<%= amt %></button>
                 <% end %>

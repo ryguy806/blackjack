@@ -2,7 +2,7 @@
     <% facing %>
     <% if facing == "front" %>
         <div class="suit-position"><%= render "card/card_suit", suit: card['suit'] %></div>
-        <p class="rank"><%= render "card/card_rank", rank: card['rank'] %></p>
+        <p class="rank" style="font-size: 48px; padding-bottom: 20px"><b><%= render "card/card_rank", rank: card['rank'] %></b></p>
         <% else %>
             <%= render "card/card_back" %>
     <% end %>

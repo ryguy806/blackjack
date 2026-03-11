@@ -1,8 +1,8 @@
 <div class="game-space">
   <h1>Blackjack</h1>
-  <p>Standard rules · Blackjack pays 3:2 · Dealer stands on 17</p>
+  <div style="margin-bottom: 24px; font-size: 1.5rem;">Standard rules · Blackjack pays 3:2 · Dealer stands on 17</div>
 
-  <p>Please set your starting balance.</p>
+  <div style="margin-bottom: 24px; font-size: 1.5rem;">Please set your starting balance.</div>
   <%= form_with url: game_create_path, method: :post do |f| %>
     <%= f.number_field :balance, value: 1000, min: 100, max: 100_000,
           placeholder: 'Starting balance' %>
