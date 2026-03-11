@@ -1,8 +1,14 @@
 <div class="dealer-hand" >
 
     <div class="hand" id="hand">
-        <% cards.each do |card| %>
-            <%= render "card/card_item", facing: facing, card: card %>
+        <% cards.each_with_index do |card, index| %>
+            
+            <% if index == 1 %>
+                <%= render "card/card_item", facing: "front", card: card%>
+                <% else %>
+                    <%= render "card/card_item", facing: facing, card: card %>
+            <% end %>
+            
         <% end %>
     </div>
 </div>
