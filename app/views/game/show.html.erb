@@ -10,8 +10,6 @@
     results = game_handler['results'] || []
 
     show_dealer = step == :player_turn ? 'back' : 'front'
-
-    can_split = false
 %>
 
 <div class="game-space">
@@ -44,10 +42,7 @@
         <% end %>
 
         <% if step == :player_turn %>
-            <%= render "player_turn" %>
-            <%= form_with url: game_split_path, method: :post, local: true do |f| %>
-                <%= f.submit 'Split', class: 'btn btn-purple', disabled: !can_split %>
-            <% end %>
+            <%= render "player_turn", balance: balance, current_hand: player_hands[active_hand]%>
         <% end %>
 
         <% if step == :game_over %>

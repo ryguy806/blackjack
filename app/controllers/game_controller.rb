@@ -32,6 +32,11 @@ class GameController < ApplicationController
     save_and_redirect
   end
 
+  def double_down
+    @game.double_down
+    save_and_redirect
+  end
+
   def split
     @game.split
     save_and_redirect

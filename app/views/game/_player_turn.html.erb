@@ -1,7 +1,16 @@
+<% 
+    can_double = current_hand['cards'].size == 2 && balance >= current_hand['bet']
+    can_split  = current_hand['cards'].size == 2 && current_hand['cards'][0] && current_hand['cards'][1] && (current_hand['cards'][0]['rank'] == current_hand['cards'][1]['rank'])
+%>
 <%= form_with url: game_hit_path, method: :post, local: true do |f| %>
     <%= f.submit 'Hit', class: 'btn btn-green' %>
 <% end %>
 
 <%= form_with url: game_stand_path, method: :post, local: true do |f| %>
     <%= f.submit 'Stand', class: 'btn btn-yellow' %>
+<% end %>
+
+ <%= form_with url: game_double_path, method: :post, local: true do |f| %>
+    <%= f.submit 'Double Down', class: 'btn btn-blue',
+        disabled: !can_double %>
 <% end %>

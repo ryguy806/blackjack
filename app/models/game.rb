@@ -39,6 +39,23 @@ class Game
         @message = change_message
     end
 
+    def double_down
+        return error("Not player turn.") unless step == :player_turn
+        return error("Can only double with 2 cards in hand.") unless current_hand.cards.size == 2
+        return error("Not enough money to double.") if balance < current_hand.bet
+
+        @balance -= current_hand.bet
+        current_hand.bet *= 2
+        current_hand.add(deck.deal)
+        @message = "Doubled! Score: #{current_hand.score}."
+
+        if current_hand.busted?
+            current_hand.busted = true
+        end
+        current_hand.done = true
+        next_hand
+    end
+
     def split
         return error('Not player turn') unless step == :player_turn
         return error('Cannot split this hand') unless current_hand.splittable?
