@@ -9,7 +9,7 @@
     active_hand = game_handler['active_hand'] || 0
     results = game_handler['results'] || []
 
-    show_dealer = step == :player_turn ? 'back' : 'front'
+    show_dealer = (step == :player_turn || step == :betting) ? 'back' : 'front'
 %>
 
 <div class="game-space">

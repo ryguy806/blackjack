@@ -8,7 +8,9 @@
             <% end %>
         <% end %>
     </div>
-    <div class="hand-score" style="margin-top: 10px">
-        <%= "Score: #{score}" %>
-    </div>
+    <% if facing == 'front' %>
+        <div class="hand-score" style="margin-top: 10px">
+            <%= "Score: #{score}" %>
+        </div>
+    <% end %>
 </div>
