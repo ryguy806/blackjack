@@ -10,12 +10,17 @@
     <%= f.submit 'Stand', class: 'btn btn-yellow' %>
 <% end %>
 
- <%= form_with url: game_double_path, method: :post, local: true do |f| %>
-    <%= f.submit 'Double Down', class: 'btn btn-blue',
-        disabled: !can_double %>
+
+<% if can_double %>
+    <%= form_with url: game_double_path, method: :post, local: true do |f| %>
+        <%= f.submit 'Double Down', class: 'btn btn-blue',
+            disabled: !can_double %>
+    <% end %>
 <% end %>
 
-<%= form_with url: game_split_path, method: :post, local: true do |f| %>
-    <%= f.submit 'Split', class: 'btn btn-purple',
-        disabled: !can_split %>
+<% if can_split %>
+    <%= form_with url: game_split_path, method: :post, local: true do |f| %>
+        <%= f.submit 'Split', class: 'btn btn-purple',
+            disabled: !can_split %>
+    <% end %>
 <% end %>
