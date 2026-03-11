@@ -1,5 +1,4 @@
 <div class="dealer-hand" >
-
     <div class="hand" id="hand">
         <% cards.each_with_index do |card, index| %>            
             <% if index == 1 %>
@@ -9,7 +8,7 @@
             <% end %>
         <% end %>
     </div>
-        <div class="hand-score">
-                <%= "Score: #{score}" %>
-            </div>
+    <div class="hand-score" style="margin-top: 10px">
+        <%= "Score: #{score}" %>
+    </div>
 </div>
