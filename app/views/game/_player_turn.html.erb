@@ -14,3 +14,8 @@
     <%= f.submit 'Double Down', class: 'btn btn-blue',
         disabled: !can_double %>
 <% end %>
+
+<%= form_with url: game_split_path, method: :post, local: true do |f| %>
+    <%= f.submit 'Split', class: 'btn btn-purple',
+        disabled: !can_split %>
+<% end %>
