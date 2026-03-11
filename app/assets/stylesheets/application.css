@@ -103,6 +103,7 @@
     justify-content: center;
     margin: 10px 0;
 }
+
 .result-badge {
     padding: 5px 14px;
     border-radius: 20px;
@@ -124,18 +125,22 @@
     gap: 10%;
 }
 
-.player-space {
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-}
-
 .player-money {
     font-size: 3rem;
 }
 
 .player-points {
     font-size: 3rem;
+}
+
+.hands {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.hand-score {
+    font-size: 1.5rem;
 }
 
 .dealer-points {
