@@ -1,16 +1,17 @@
 <%
     game_handler = session[:game] || {}
     step = (game_handler['step'] || "betting").to_sym
-    player_hand = (game_handler['player_hand'] || {})
+    player_hands = (game_handler['player_hands'] || [])
     dealer_hand = game_handler['dealer_hand'] || {}
     dealer_cards = dealer_hand['cards'] || []
     balance = game_handler['balance'] || 0
     message = game_handler['message'] || ''
-
-    player_cards = player_hand['cards'] || []
-    bet = player_hand['bet'] || 0
+    active_hand = game_handler['active_hand'] || 0
+    results = game_handler['results'] || []
 
     show_dealer = step == :player_turn ? 'back' : 'front'
+
+    can_split = false
 %>
 
 <div class="game-space">
@@ -19,10 +20,23 @@
     </div>
 
     <div class="message-box"><%= message %></div>
-
+    
     <div class="player" >
-        <%= render "player_space", facing: "front", cards: player_cards, balance: balance %>
+        <% player_hands.each_with_index do | hand, index | %>
+            <% 
+                hand_cards = hand['cards'] || []
+                hand_score = Hand.from_h(hand).score
+                is_bust = hand['busted']
+                is_stood = hand['stood']
+                hand_bet = hand['bet'] || 0
+                can_split = hand_cards.size == 2 && hand_cards[0] && hand_cards[1] && (hand_cards[0]['rank'] == hand_cards[1]['rank'])
+            %>
+            <%= render "player_space", index: index, facing: "front", cards: hand_cards, balance: balance, bet: hand_bet, bust: is_bust, stood: is_stood %>
+        <% end %>
     </div>
+
+    <div class="player-money" >$<%= balance %></div>
+
 
     <div class="actions">
         <% if step == :betting %>
@@ -31,6 +45,9 @@
 
         <% if step == :player_turn %>
             <%= render "player_turn" %>
+            <%= form_with url: game_split_path, method: :post, local: true do |f| %>
+                <%= f.submit 'Split', class: 'btn btn-purple', disabled: !can_split %>
+            <% end %>
         <% end %>
 
         <% if step == :game_over %>

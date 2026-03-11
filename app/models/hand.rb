@@ -14,6 +14,10 @@ class Hand
         @cards << card #The << operator acts as an append method or concatination method.
     end
 
+    def splittable?
+        cards.size == 2 && cards[0].rank == cards[1].rank
+    end
+
     #calculates the score of the current hand.
     def score
         total = cards.sum { |card| card.value }

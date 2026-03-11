@@ -1,11 +1,15 @@
 <div class="player-space">
-    <div class="player-hand" >
-        <div class="hand" id="hand">
-            <% cards.each do | card | %>
-                <%= render "card/card_item", facing: facing, card: card %>
-            <% end %>
+    <div class="hands">
+        <%= "Hand #: #{index + 1}" %>
+        <%= "Bet: $#{bet}" %>
+        <div class="player-hand" >
+            <% if bust   %><span style="color: #f00; font-size: 1.5rem;">BUST</span><% end %>
+            <% if stood && !bust %><span style="color: #000; font-size: 1.5rem;">STOOD</span><% end %>
+            <div class="hand" id="hand">
+                <% cards.each do | card | %>
+                    <%= render "card/card_item", facing: facing, card: card %>
+                <% end %>
+            </div>
         </div>
     </div>
-
-    <div class="player-money" >$<%= balance %></div>
 </div>
