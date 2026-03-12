@@ -171,6 +171,10 @@
     color: #000;
  }
 
+ .highlight {
+    box-shadow: 5px 5px 25px #c8a800;
+ }
+
  .suit-position {
     position: absolute;
     top: 2px;

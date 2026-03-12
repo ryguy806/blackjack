@@ -2,9 +2,9 @@
     <div class="hand" id="hand">
         <% cards.each_with_index do |card, index| %>            
             <% if index == 1 %>
-                <%= render "card/card_item", facing: "front", card: card%>
+                <%= render "card/card_item", facing: "front", card: card, number: 0, size: 2, more_than_two: cards.size > 2 %>
                 <% else %>
-                    <%= render "card/card_item", facing: facing, card: card %>
+                    <%= render "card/card_item", facing: facing, card: card, number: index, size: cards.size, more_than_two: cards.size > 2 %>
             <% end %>
         <% end %>
     </div>
