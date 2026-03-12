@@ -9,6 +9,12 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+.audiowide-regular {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .game-space {
     background-image: url("space_background.jpg");
     background-repeat: no-repeat;
@@ -22,8 +28,13 @@
     align-items: center;
     color: #FFF;
 }
-
-.game-space h1 { margin-bottom: 14px; font-size: 3rem; }
+.game-space form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.game-space h1 { margin-bottom: 15%; margin-top: -2%; font-size: 4rem; font-family: "Audiowide";}
 .game-space p  { color: #000; margin-bottom: 24px; font-size: 1.5rem; }
 .game-space input[type=number] {
     width: 140px;
@@ -36,6 +47,25 @@
     text-align: center;
     display: block;
     margin: 0 auto 18px;
+}
+.game-space input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+.game-space input[type=submit] {
+    height: 160%;
+    border-radius: 50%;
+}
+
+.rocket {
+    height: 5%;
+    width: 5%;
+    transform: rotate(78deg);
+    position: fixed;
+    top: 0%;
+    left: 65%
+}
+.rocket img {
+    transform: scale(0.5);
 }
 
 .message-box {

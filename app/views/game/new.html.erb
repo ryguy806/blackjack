@@ -1,11 +1,19 @@
 <div class="game-space">
-  <h1>Blackjack</h1>
+  <h1>Space Blackjack</h1>
+  <div class="rocket">
+    <%= image_tag("rocket_ship.png", alt: "Cartoon Rocket Ship") %>
+  </div>
   <div style="margin-bottom: 24px; font-size: 1.5rem;">Standard rules · Blackjack pays 3:2 · Dealer stands on 17</div>
 
-  <div style="margin-bottom: 24px; font-size: 1.5rem;">Please set your starting balance.</div>
+  <div style="margin-bottom: 24px; font-size: 1.5rem;">Please set your starting balance:</div>
   <%= form_with url: game_create_path, method: :post do |f| %>
-    <%= f.number_field :balance, value: 1000, min: 100, max: 100_000,
-          placeholder: 'Starting balance' %>
-    <%= f.submit 'Start Game', class: 'btn' %>
+    <div style="display: flex; flex-direction: row; justify-items: center; align-content: center">
+      <span style="font-size: 2rem; padding-top: 5px;">$</span>
+      <%= f.number_field :balance, value: 1000, min: 100, max: 100_000,
+            placeholder: 'Starting balance' %>
+    </div>
+    <div stlye="display: flex; margin: 0 15px;">
+      <%= f.submit 'Start Game', class: 'btn btn-green' %>
+    </div>
   <% end %>
 </div>
