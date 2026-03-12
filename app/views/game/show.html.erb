@@ -17,10 +17,10 @@
         <%= render "dealer_space", facing: show_dealer, cards: dealer_cards, score: Hand.from_h(dealer_hand).score %>
     </div>
 
-    <div class="message-box"><%= message %></div>
+    <div class="message-box <%= class_names(playing: step != :betting) %>"><%= message %></div>
     <div class="player-money" >$<%= balance %></div>
     
-    <div class="player" >
+    <div class="player">
         <% player_hands.each_with_index do | hand, index | %>
             <% 
                 hand_cards = hand['cards'] || []
@@ -29,16 +29,19 @@
                 is_stood = hand['stood']
                 hand_bet = hand['bet'] || 0
                 can_split = hand_cards.size == 2 && hand_cards[0] && hand_cards[1] && (hand_cards[0]['rank'] == hand_cards[1]['rank'])
+                current_cards = index == active_hand
             %>
-            <%= render "player_space", index: index, 
-                                    facing: "front", 
-                                    cards: hand_cards, 
-                                    balance: balance, 
-                                    bet: hand_bet, 
-                                    bust: is_bust, 
-                                    stood: is_stood, 
-                                    score: hand_score
-            %>
+            <div class="<%= class_names(current_hand: current_cards && player_hands.size > 1) %>">
+                <%= render "player_space", index: index, 
+                                        facing: "front", 
+                                        cards: hand_cards, 
+                                        balance: balance, 
+                                        bet: hand_bet, 
+                                        bust: is_bust, 
+                                        stood: is_stood, 
+                                        score: hand_score
+                %>
+            </div>
         <% end %>
     </div>
 
@@ -48,11 +51,15 @@
         <% end %>
 
         <% if step == :player_turn %>
-            <%= render "player_turn", balance: balance, current_hand: player_hands[active_hand]%>
+            <div class="action-buttons">
+                <%= render "player_turn", balance: balance, current_hand: player_hands[active_hand]%>
+            </div>
         <% end %>
 
         <% if step == :game_over %>
-            <%= render "game_over", balance: balance %>
+            <div class="action-buttons">
+                <%= render "game_over", balance: balance %>
+            </div>
         <% end %>
     </div>
 </div>

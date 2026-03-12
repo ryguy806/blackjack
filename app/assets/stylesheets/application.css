@@ -51,6 +51,12 @@
     min-height: 46px;
 }
 
+.playing {
+    position: fixed;
+    top: 15%;
+    right: 30%
+}
+
 .actions {
     position: absolute;
     bottom: 5rem;
@@ -121,11 +127,25 @@
     flex-direction: row;
 }
 
+.action-buttons {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
 .player {
     width: 80%;
     display: flex;
     flex-direction: row;
     color: #FFF;
+}
+
+.player-space {
+    padding: 3px 5px;
 }
 
 .player-money {
@@ -140,6 +160,7 @@
     display: flex;
     flex-direction: column;
     color: #FFF;
+    padding: 3px;
 }
 
 .hand-score {
@@ -154,6 +175,10 @@
     display: flex;
     flex-direction: row;
     column-gap: 10px;
+}
+
+.current_hand {
+    border: 3px blue solid;
 }
 
  .card {
