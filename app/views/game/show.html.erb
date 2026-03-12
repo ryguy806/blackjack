@@ -30,7 +30,15 @@
                 hand_bet = hand['bet'] || 0
                 can_split = hand_cards.size == 2 && hand_cards[0] && hand_cards[1] && (hand_cards[0]['rank'] == hand_cards[1]['rank'])
             %>
-            <%= render "player_space", index: index, facing: "front", cards: hand_cards, balance: balance, bet: hand_bet, bust: is_bust, stood: is_stood, score: hand_score %>
+            <%= render "player_space", index: index, 
+                                    facing: "front", 
+                                    cards: hand_cards, 
+                                    balance: balance, 
+                                    bet: hand_bet, 
+                                    bust: is_bust, 
+                                    stood: is_stood, 
+                                    score: hand_score
+            %>
         <% end %>
     </div>
 

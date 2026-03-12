@@ -1,4 +1,4 @@
-<div class="card <%= class_names(highlight: number == size - 1 && more_than_two) %>">
+<div class="card <%= class_names(highlight: number == size - 1 && more_than_two) %>" style="<%= number > 0 ? 'margin-left: -50px' : '' %>" >
     <% if facing == "front" %>
         <div class="suit-position"><%= render "card/card_suit", suit: card['suit'] %></div>
         <p class="rank" style="font-size: 48px; padding-bottom: 20px"><b><%= render "card/card_rank", rank: card['rank'] %></b></p>

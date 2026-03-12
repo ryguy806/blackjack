@@ -12,19 +12,6 @@ class Game
       @results = []
     end
 
-    # TODO Need to break game into steps
-    # Steps
-    # -Bet
-    # -Deal
-    # Player turn
-    # -Split (Needs to happen only on deal)
-    # -Double_down
-    # -Hit
-    # -Stand
-    # -Busted
-    # -Done
-    # Dealer turn
-
     def place_bet(wager)
         return error('Not in betting phase') unless step == :betting
 
@@ -106,6 +93,7 @@ class Game
 
         while dealer_hand.score < 17
             dealer_hand.add(deck.deal)
+            sleep(1)
         end
 
         @step = :game_over
@@ -185,6 +173,7 @@ class Game
                 @active_hand = next_index
                 else
                     @step = :dealer_turn
+                    sleep(1)
                     dealer_turn
             end
         end
