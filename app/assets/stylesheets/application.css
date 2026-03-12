@@ -232,11 +232,18 @@
       cursor: pointer;
       letter-spacing: 0.5px;
       transition: filter 0.15s, transform 0.1s;
+      box-shadow: 3px 3px 3px black;
     }
-    .btn-green  { background: #2e7d32; color: #fff; }
+    .btn-green { background: #2e7d32; color: #fff; }
+    .btn-green:hover { background: #2e7d3280; color: #fff; }
     .btn-yellow { background: #c8a800; color: #1a1a00; }
+    .btn-yellow:hover { background: #c8a80080; color: #1a1a00; }
     .btn-purple { background: #6a1b9a; color: #fff; }
-    .btn-gray   { background: #455a64; color: #fff; }
+    .btn-purple:hover { background: #6a1b9a80; color: #fff; }
+    .btn-gray { background: #455a64; color: #fff; }
+    .btn-gray:hover { background: #455a6480; color: #fff; }
+    .btn-blue { background: #08f3ff; color: #000; }
+    .btn-blue:hover { background: #08f3ff80; color: #000; }
 
  .out {
     display: flex;
