@@ -4,7 +4,7 @@ A modern, web-based Blackjack card game built with Rails 8.1.
 
 ## Overview
 
-This is a fully-featured Blackjack game application featuring responsive UI, real-time game logic, and smooth interactive gameplay. Built with the latest Rails framework and Hotwire for dynamic, SPA-like experiences without complex JavaScript.
+This is a fully-featured Blackjack game application featuring real-time game logic, and smooth interactive gameplay. Built with the latest Rails framework and Hotwire for dynamic, SPA-like experiences without complex JavaScript.
 
 ## Version Information
 
