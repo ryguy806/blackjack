@@ -68,24 +68,62 @@
     transform: scale(0.5);
 }
 
-.message-box {
+.wavetext span {
+    display: inline-block;
+    font-size: 4rem;
+    animation: wave 2s ease-in-out infinite;
+}
+
+.wavetext span:nth-child(1) {
+    animation-delay: 0s;
+}
+.wavetext span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.wavetext span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.wavetext span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.messagebox {
     background: rgba(0,0,0,0.35);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
+    padding: 5px 15px 5px 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #f0e6cc;
+    min-height: 35px;
+    max-width: 23%;
+    white-space: normal;
+}
+
+.betting {
     padding: 12px 18px;
     text-align: center;
     margin: 16px 0;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     color: #f0e6cc;
     min-height: 46px;
-    max-width: 23%;
+    max-width: 30%;
     white-space: normal;
 }
 
 .playing {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: -40px;
+    left: 40px;
 }
 
 .actions {
@@ -102,7 +140,7 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
-    margin: 16px 0;
+    margin-bottom: 10%;
 }
 
 .bet-form input[type=number] {
@@ -181,8 +219,9 @@
 }
 
 .player-money {
-    margin-top: 5%;
+    margin-top: -5%;
     font-size: 3rem;
+    margin-bottom: 5%;
 }
 
 .player-points {

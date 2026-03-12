@@ -17,9 +17,12 @@
         <%= render "dealer_space", facing: show_dealer, cards: dealer_cards, score: Hand.from_h(dealer_hand).score %>
     </div>
 
-    <div class="message-box"><%= message %></div>
-    <div class="player-money <%= class_names(playing: @step != :betting)%>">$<%= balance %></div>
-    
+    <div class="player-money <%= class_names(playing: step != :betting)%>"><%= step == :betting ? 'Balance: ' : '' %>$<%= balance %></div>
+    <div class="<%= class_names(messagebox: step != :betting, betting: step == :betting, wavetext: step == :betting) %>">
+        <% message.split(" ").each do |char| %>
+            <span><%= char %></span>
+        <%end%>        
+    </div>
     <div class="player">
         <% player_hands.each_with_index do | hand, index | %>
             <% 
