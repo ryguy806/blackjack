@@ -99,6 +99,7 @@
     transition: background 0.15s;
 }
 .quick-bet:hover { background: rgba(255,255,255,0.22); }
+.quick-bet:focus { background: rgb(255, 247, 1); color: #000 }
 
 .results {
     display: flex;

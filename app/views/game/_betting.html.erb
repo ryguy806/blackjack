@@ -4,7 +4,7 @@
         <div class="quick-bets">
             <div>
                 <p style="color: #FFF;">Custom Bet:</p>
-                <%= f.number_field :wager, min: 1, max: balance, value: [25, balance].min,
+                <%= f.number_field :wager, min: 1, max: balance, value: 1,
                         placeholder: 'Bet', style: 'margin-top:6px;', 
                         oninvalid: "this.setCustomValidity('Bet must be less than or equal to your balance.')",
                         oninput: "this.setCustomValidity('')"
