@@ -49,6 +49,8 @@
     font-size: 1.5rem;
     color: #f0e6cc;
     min-height: 46px;
+    max-width: 23%;
+    white-space: normal;
 }
 
 .playing {
@@ -138,10 +140,11 @@
 }
 
 .player {
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: row;
     color: #FFF;
+    margin-top: 5%;
 }
 
 .player-space {
@@ -149,6 +152,7 @@
 }
 
 .player-money {
+    margin-top: 5%;
     font-size: 3rem;
 }
 

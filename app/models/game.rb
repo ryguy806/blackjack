@@ -145,21 +145,21 @@ class Game
                 hand_result = 
                     if hand.blackjack? && !dealer_hand.blackjack?
                         @balance += (hand.bet * 2.5).to_i
-                        @message = "Hand #{index + 1}: Blackjack! You win! Earned $#{(hand.bet * 1.5).to_i}!"
+                        @message = "#{player_hands.size == 1 ? "Hand #{index + 1}:" : ""} Blackjack! You win! Earned $#{(hand.bet * 1.5).to_i}!"
                     elsif hand.busted?
-                        @message = "Hand #{index + 1}: Bust! Lost $#{hand.bet} Try again."
+                        @message = "#{player_hands.size != 1 ? "Hand #{index + 1}:" : ""} Bust! Lost $#{hand.bet} Try again."
                     elsif dealer_hand.busted? || hand.score > dealer_hand.score
                         @balance += hand.bet * 2
-                        @message = "Hand #{index + 1}: You win! Earned $#{hand.bet}!"
+                        @message = "#{player_hands.size != 1 ? "Hand #{index + 1}:" : ""} You win! Earned $#{hand.bet}!"
                     elsif hand.score == dealer_hand.score
                         @balance += hand.bet
-                        @message = "Hand #{index + 1}: Push. Money back."
+                        @message = "#{player_hands.size != 1 ? "Hand #{index + 1}:" : ""} Push. Money back."
                     else
-                        @message = "Hand #{index + 1}: Dealer wins. Lost $#{hand.bet}."
+                        @message = "#{player_hands.size != 1 ? "Hand #{index + 1}:" : ""} Dealer wins. Lost $#{hand.bet}."
                     end
                 @results << hand_result
             end
-            @message = results.join(" | ")
+            @message = results.join(" ")
         end
 
         def current_hand
