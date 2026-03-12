@@ -17,8 +17,8 @@
         <%= render "dealer_space", facing: show_dealer, cards: dealer_cards, score: Hand.from_h(dealer_hand).score %>
     </div>
 
-    <div class="message-box <%= class_names(playing: step != :betting) %>"><%= message %></div>
-    <div class="player-money" >$<%= balance %></div>
+    <div class="message-box"><%= message %></div>
+    <div class="player-money <%= class_names(playing: @step != :betting)%>">$<%= balance %></div>
     
     <div class="player">
         <% player_hands.each_with_index do | hand, index | %>

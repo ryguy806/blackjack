@@ -84,8 +84,8 @@
 
 .playing {
     position: fixed;
-    top: 15%;
-    right: 30%
+    bottom: 20px;
+    left: 20px;
 }
 
 .actions {
