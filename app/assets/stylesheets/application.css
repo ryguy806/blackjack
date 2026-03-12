@@ -124,6 +124,7 @@
     width: 80%;
     display: flex;
     flex-direction: row;
+    color: #FFF;
 }
 
 .player-money {
@@ -137,6 +138,7 @@
 .hands {
     display: flex;
     flex-direction: column;
+    color: #FFF;
 }
 
 .hand-score {

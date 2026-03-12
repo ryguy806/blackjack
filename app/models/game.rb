@@ -93,7 +93,9 @@ class Game
 
         while dealer_hand.score < 17
             dealer_hand.add(deck.deal)
-            sleep(1)
+            if dealer_hand.cards.size == 5
+                break
+            end
         end
 
         @step = :game_over
@@ -173,7 +175,6 @@ class Game
                 @active_hand = next_index
                 else
                     @step = :dealer_turn
-                    sleep(1)
                     dealer_turn
             end
         end
