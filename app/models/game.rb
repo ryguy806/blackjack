@@ -147,7 +147,7 @@ class Game
                         @balance += (hand.bet * 2.5).to_i
                         @message = "#{player_hands.size == 1 ? "Hand #{index + 1}:" : ""} Blackjack! You win! Earned $#{(hand.bet * 1.5).to_i}!"
                     elsif hand.busted?
-                        @message = "#{player_hands.size != 1 ? "Hand #{index + 1}:" : ""} Bust! Lost $#{hand.bet} Try again."
+                        @message = "#{player_hands.size != 1 ? "Hand #{index + 1}:" : ""} Bust! Lost $#{hand.bet}. Try again."
                     elsif dealer_hand.busted? || hand.score > dealer_hand.score
                         @balance += hand.bet * 2
                         @message = "#{player_hands.size != 1 ? "Hand #{index + 1}:" : ""} You win! Earned $#{hand.bet}!"

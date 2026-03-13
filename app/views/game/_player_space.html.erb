@@ -1,7 +1,9 @@
 <div class="player-space">
     <div class="hands">
-        <%= "Hand #: #{index + 1}" %>
-        <%= "Bet: $#{bet}" %>
+        <div style="padding-bottom: 5px; padding-right: 5px;">
+            <%= "Hand #: #{index + 1}," %>
+            <%= "Bet: $#{bet}" %>
+        </div>
         <div class="player-hand">
             <% if bust   %><span style="color: #f00; font-size: 1.5rem;">BUST</span><% end %>
             <% if stood && !bust %><span style="color: #FFF; font-size: 1.5rem;">STOOD</span><% end %>

@@ -2,25 +2,35 @@
     can_double = current_hand['cards'].size == 2 && balance >= current_hand['bet']
     can_split  = current_hand['cards'].size == 2 && current_hand['cards'][0] && current_hand['cards'][1] && (current_hand['cards'][0]['rank'] == current_hand['cards'][1]['rank'])
 %>
-<%= form_with url: game_hit_path, method: :post, local: true do |f| %>
-    <%= f.submit 'Hit', class: 'btn btn-green' %>
-<% end %>
+<div style="display: flex; flex-direction: column; row-gap: 30px; justify-content: right; align-items: center; padding-top: 9%; padding-left: 20px">
+    <div style="display: flex; flex-direction: row; column-gap: 20px;">
+        <%= form_with url: game_hit_path, method: :post, local: true do |f| %>
+            <div style="height: 60%; display: flex;">
+                <%= f.submit 'Hit', class: 'btn btn-green', style: "width: 150%" %>
+            </div>
+        <% end %>
 
-<%= form_with url: game_stand_path, method: :post, local: true do |f| %>
-    <%= f.submit 'Stand', class: 'btn btn-yellow' %>
-<% end %>
+        <%= form_with url: game_stand_path, method: :post, local: true do |f| %>
+            <div style="height: 60%; display: flex;">
+                <%= f.submit 'Stand', class: 'btn btn-yellow' %>
+            </div>
+        <% end %>
 
+        <%= form_with url: game_split_path, method: :post, local: true do |f| %>
+            <div style="width: 110%; height: 60%; display: flex;">
+                <%= f.submit 'Split', class: 'btn btn-purple',
+                    disabled: !can_split %>
+            </div>
+        <% end %>
+    </div>
+    <div style="display: flex; flex-direction: row; column-gap: 10px;">
+        <%= form_with url: game_double_path, method: :post, local: true do |f| %>
+            <%= f.submit 'Double Down', class: 'btn btn-blue',
+                disabled: !can_double %>
+        <% end %>
 
-<% if can_double %>
-    <%= form_with url: game_double_path, method: :post, local: true do |f| %>
-        <%= f.submit 'Double Down', class: 'btn btn-blue',
-            disabled: !can_double %>
-    <% end %>
-<% end %>
-
-<% if can_split %>
-    <%= form_with url: game_split_path, method: :post, local: true do |f| %>
-        <%= f.submit 'Split', class: 'btn btn-purple',
-            disabled: !can_split %>
-    <% end %>
-<% end %>
+        <%= form_with url: new_game_path, method: :get, local: true do |f| %>
+            <%= f.submit 'New Game', class: 'btn btn-gray' %>
+        <% end %>
+    </div>
+</div>

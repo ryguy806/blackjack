@@ -97,9 +97,6 @@
 }
 
 .messagebox {
-    background: rgba(0,0,0,0.35);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px;
     padding: 5px 15px 5px 15px;
     text-align: center;
     font-size: 1.5rem;
@@ -122,8 +119,9 @@
 
 .playing {
     position: fixed;
-    bottom: -40px;
-    left: 40px;
+    bottom: 7%;
+    left: 6%;
+    font-size: 1.5rem
 }
 
 .actions {
@@ -198,7 +196,7 @@
 
 .action-buttons {
     position: fixed;
-    right: 0;
+    right: 2%;
     bottom: 0;
     padding: 50px;
     display: flex;
@@ -218,12 +216,6 @@
     padding: 3px 5px;
 }
 
-.player-money {
-    margin-top: -5%;
-    font-size: 3rem;
-    margin-bottom: 5%;
-}
-
 .player-points {
     font-size: 3rem;
 }
@@ -233,10 +225,12 @@
     flex-direction: column;
     color: #FFF;
     padding: 3px;
+    font-size: 1.4rem;
 }
 
 .hand-score {
     font-size: 1.5rem;
+    padding-top: 5px;
 }
 
 .dealer-points {
@@ -301,17 +295,22 @@
       letter-spacing: 0.5px;
       transition: filter 0.15s, transform 0.1s;
       box-shadow: 3px 3px 3px black;
-    }
+}
     .btn-green { background: #2e7d32; color: #fff; }
     .btn-green:hover { background: #2e7d3280; color: #fff; }
+    .btn-green:disabled { background: #2e7d3239; color: #fff; }
     .btn-yellow { background: #c8a800; color: #1a1a00; }
     .btn-yellow:hover { background: #c8a80080; color: #1a1a00; }
+    .btn-yellow:disabled { background: #c8a80039; color: #1a1a00; }
     .btn-purple { background: #6a1b9a; color: #fff; }
     .btn-purple:hover { background: #6a1b9a80; color: #fff; }
+    .btn-purple:disabled { background: #6a1b9a39; color: #fff; }
     .btn-gray { background: #455a64; color: #fff; }
     .btn-gray:hover { background: #455a6480; color: #fff; }
+    .btn-gray:disabled { background: #455a6439; color: #fff; }
     .btn-blue { background: #08f3ff; color: #000; }
     .btn-blue:hover { background: #08f3ff80; color: #000; }
+    .btn-blue:disabled { background: #08f3ff39; color: #000; }
 
  .out {
     display: flex;
