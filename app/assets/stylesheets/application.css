@@ -209,11 +209,15 @@
     display: flex;
     flex-direction: row;
     color: #FFF;
-    margin-top: 5%;
 }
 
 .player-space {
     padding: 3px 5px;
+}
+
+.playermoney {
+    font-size: 2.5rem;
+    padding-bottom: 3%;
 }
 
 .player-points {
@@ -298,19 +302,19 @@
 }
     .btn-green { background: #2e7d32; color: #fff; }
     .btn-green:hover { background: #2e7d3280; color: #fff; }
-    .btn-green:disabled { background: #2e7d3239; color: #fff; }
+    .btn-green:disabled { background: #7d7d7d; color: #3d3c3c; }
     .btn-yellow { background: #c8a800; color: #1a1a00; }
     .btn-yellow:hover { background: #c8a80080; color: #1a1a00; }
-    .btn-yellow:disabled { background: #c8a80039; color: #1a1a00; }
+    .btn-yellow:disabled { background: #7d7d7d; color: #1a1a00; }
     .btn-purple { background: #6a1b9a; color: #fff; }
     .btn-purple:hover { background: #6a1b9a80; color: #fff; }
-    .btn-purple:disabled { background: #6a1b9a39; color: #fff; }
-    .btn-gray { background: #455a64; color: #fff; }
-    .btn-gray:hover { background: #455a6480; color: #fff; }
-    .btn-gray:disabled { background: #455a6439; color: #fff; }
+    .btn-purple:disabled { background: #7d7d7d; color: #3d3c3c; }
+    .btn-gray { background: #7d7d7d; color: #fff; }
+    .btn-gray:hover { background: #7d7d7d80; color: #fff; }
+    .btn-gray:disabled { background: #7d7d7d; color: #3d3c3c; }
     .btn-blue { background: #08f3ff; color: #000; }
     .btn-blue:hover { background: #08f3ff80; color: #000; }
-    .btn-blue:disabled { background: #08f3ff39; color: #000; }
+    .btn-blue:disabled { background: #7d7d7d; color: #3d3c3c; }
 
  .out {
     display: flex;

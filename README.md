@@ -4,7 +4,7 @@ A modern, web-based Blackjack card game built with Rails 8.1.
 
 ## Overview
 
-This is a fully-featured Blackjack game application featuring real-time game logic, and smooth interactive gameplay. Built with the latest Rails framework and Hotwire for dynamic, SPA-like experiences without complex JavaScript.
+This is traditional blackjack, following the rules listed on the Bicycle website. It uses real-time game logic, and smooth interactive gameplay. It incorporates the latest Ruby on Rails framework aand used Hotwire for a dynamic experience.
 
 ## Version Information
 
@@ -17,8 +17,6 @@ This is a fully-featured Blackjack game application featuring real-time game log
 
 - Ruby 3.4.8 or higher
 - SQLite 3
-- Docker (for containerized deployment)
-- Node.js (for development)
 
 ## Development Setup
 
@@ -58,7 +56,6 @@ The application will be available at `http://localhost:3000`.
 - **Database:** SQLite for development/production flexibility
 - **Asset Pipeline:** Propshaft with CSS and JavaScript bundling
 - **Job Processing:** Built-in with Solid Queue
-- **Security:** Credentials management with Rails encrypted config
 
 ## Project Structure
 
