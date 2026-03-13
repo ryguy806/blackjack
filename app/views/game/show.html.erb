@@ -16,7 +16,6 @@
     <div class="dealer" >
         <%= render "dealer_space", facing: show_dealer, cards: dealer_cards, score: Hand.from_h(dealer_hand).score %>
     </div>
-
     <div class="<%= class_names(playing: step != :betting, playermoney: step == :betting)%>">Balance: $<%= balance %></div>
     <div class="<%= class_names(messagebox: step != :betting, betting: step == :betting, wavetext: step == :betting) %>">
         <% message.split(" ").each do |char| %>
