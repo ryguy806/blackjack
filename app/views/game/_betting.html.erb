@@ -6,7 +6,7 @@
                 <p style="color: #FFF;">Custom Bet:</p>
                 <div style="display: flex; flex-direction: row; justify-items: center; align-content: center">
                     <span style="font-size: 1.5rem; padding-top: 7px;">$</span>
-                    <%= f.number_field :wager, value: 2, min: 2, max: [500, balance].min,
+                    <%= f.number_field :wager, value: 2, min: 2, max: balance,
                             placeholder: 'Bet', oninvalid: "this.setCustomValidity('Bet must be greater than 2 and less than or equal to your balance.')",
                         oninput: "this.setCustomValidity('')" %>
                 </div>
