@@ -4,7 +4,9 @@ A modern, web-based Blackjack card game built with Rails 8.1.
 
 ## Overview
 
-This is traditional blackjack, following the rules listed on the Bicycle website. It uses real-time game logic, and smooth interactive gameplay. It incorporates the latest Ruby on Rails framework aand used Hotwire for a dynamic experience.
+This is traditional blackjack, following the rules listed on the Bicycle website, utilizing a single 52-card deck. It uses real-time game logic, and smooth interactive gameplay. It incorporates the latest Ruby on Rails framework aand used Hotwire for a dynamic experience.
+
+Beyond the core rules, betting has been added, where the user sets their starting balance, with a minimum of $100 and a max of $100,000. The user must then place a bet, with a minimim bet of $2, and a maximum that is less than or equal to their total balance. Splitting has also been added, and being able to split multiple times. The game logic handles each hand before the dealer takes their turn.
 
 ## Version Information
 
